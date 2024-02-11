@@ -1,0 +1,71 @@
+<DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>upload</title>
+    <link rel="stylesheet" href="../views/index.css" />
+  </head>
+  <body>
+    <div class="container" id="c2">
+      <div>
+        <form
+          action="/api/upload"
+          method="post"
+          enctype="multipart/form-data"
+          id="upload"
+        >
+          <input type="file" name="pdfFile" class="field" />
+          <button type="submit">upload</button>
+        </form>
+      </div>
+      <div>
+        <form action="/api/show" method="get" id="download">
+          <button type="submit" id="btn">Show</button>
+        </form>
+      </div>
+    </div>
+    <div class="container1"></div>
+    <div class="text_image"></div>
+    <script>
+      window.addEventListener("beforeunload", async function (event) {
+        event.preventDefault();
+        event.returnValue = "";
+        const response = await fetch("/api/logout", {
+          method: "DELETE",
+        });
+      });
+
+      const form = document.querySelector("#upload");
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const response = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        });
+      });
+
+      const down = document.querySelector("#download");
+      down.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const response = await fetch("/api/show");
+        const images = await response.json();
+        console.log(images);
+        const container = document.querySelector(".container1");
+        images.forEach((image) => {
+          const img = document.createElement("img");
+          img.src = "/static/" + "images/" + image;
+          container.append(img);
+        });
+
+        // const text_image = document.querySelector(".text_image");
+        // text_array.forEach((text) => {
+        //   const div = document.createElement("div");
+        //   div.innerHTML = text;
+        //   text_image.append(div);
+        // });
+      });
+    </script>
+  </body>
+</html>

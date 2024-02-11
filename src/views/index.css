@@ -1,0 +1,53 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  font-size: 30px;
+  color: rgb(234, 32, 83);
+  background-color: lightsalmon;
+}
+
+.container {
+  display: flex;
+  height: 80vh;
+  width: 100vw;
+  justify-content: center;
+}
+
+#c1 {
+  align-items: center;
+}
+
+button {
+  height: 50px;
+  width: 120px;
+  font-size: 26px;
+  border-radius: 20px;
+  border: 2px solid red;
+  color: red;
+}
+
+.field {
+  font-size: 30px;
+  border-radius: 20px;
+  border: 2px solid red;
+}
+
+#c2 {
+  position: absolute;
+  top: 10%;
+  height: 40%;
+}
+
+#btn {
+  position: absolute;
+  top: 20%;
+  right: 60%;
+}
+
+.container1 {
+  background-color: red;
+}
+img {
+  height: 200px;
+  width: 200px;
+}
