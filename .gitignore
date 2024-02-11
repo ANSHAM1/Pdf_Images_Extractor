@@ -92,6 +92,7 @@ web_modules/
 out
 
 venv
+venv/
 # Nuxt.js build / generate output
 .nuxt
 dist
